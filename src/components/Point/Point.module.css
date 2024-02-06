@@ -1,0 +1,20 @@
+.point {
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+  min-width: 228px;
+  width: 100%;
+  height: auto;
+  align-items: center;
+  min-height: 72px;
+  padding: 0 8px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.35);
+  border-radius: 2px;
+}
+
+.timer {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 13px;
+}

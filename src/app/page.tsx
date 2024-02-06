@@ -1,95 +1,47 @@
 import Image from "next/image";
+import { Button, FloatingLabel, Form } from "react-bootstrap";
 import styles from "./page.module.css";
+import Point from "@/components/Point/Point";
+import MTI from "../assets/mti.png";
+import logout from "../assets/logout.png";
 
 export default function Home() {
   return (
     <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+      <header className="d-flex justify-content-between align-items-center">
+        <div className="d-flex flex-column gap-2 ">
+          <h1 style={{ fontSize: "24px", fontWeight: "bold" }}>Felipe Ferreira Aguiar</h1>
+          <h2 style={{ fontSize: "14px" }}>felipeaguiar@mti.mt.gov.br</h2>
+          <div className="d-flex gap-2 text-danger align-items-center" style={{ fontSize: "14px" }}>
+            <Image src={logout} alt="logout" style={{ maxHeight: "15px", maxWidth: "15px" }} />
+            Desconectar
+          </div>
         </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
+        <Image src={MTI} alt="MTI Logo" style={{ maxHeight: "75px", maxWidth: "200px" }} />
+      </header>
+      <div className={styles.main_content}>
+        <form className={styles.point_form}>
+          <h1 style={{ fontSize: "16px", fontWeight: "500" }}>Registro referente ao dia 06/02/2024</h1>
+          <FloatingLabel controlId="floatingTextarea2" label="Observação">
+            <Form.Control
+              as="textarea"
+              placeholder="Descreva a razão de alguma irregularidade ou observação em relação ao horário (Opcional)"
+              style={{ height: "100px", maxHeight: "200px", minHeight: "100px" }}
+            />
+          </FloatingLabel>
+          <Button type="submit" variant="primary">
+            Registrar ponto
+          </Button>
+        </form>
+        <div className={styles.points}>
+          <h1 style={{ fontSize: "16px" }}>Histórico de pontos</h1>
+          <Point />
+          <Point />
+          <Point />
+          <Point />
+        </div>
       </div>
     </main>
   );
 }
+
