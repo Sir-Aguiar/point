@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import { Button, FloatingLabel, Form } from "react-bootstrap";
 import styles from "./page.module.css";
@@ -44,4 +45,3 @@ export default function Home() {
     </main>
   );
 }
-

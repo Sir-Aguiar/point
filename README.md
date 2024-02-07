@@ -21,3 +21,13 @@ Passo 4 -
 Quando todas as alterações já estiverem prontas e as funcionalidades que você estava trabalhando implementadas, então envie os commits desta branch
 
 `git push -u origin <nome descritivo da alteração a ser feita>`
+
+# Configurando o Firestore no seu ambiente
+
+Passo 1 -
+
+Crie na raíz do seu projeto um arquivo `.env.local`
+
+Passo 2 -
+
+Insira neste arquivo as credenciais de acesso ao banco
