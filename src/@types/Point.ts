@@ -34,3 +34,8 @@ export interface CreatePointInput {
   observation: string | null;
   joinedAt: Date;
 }
+
+export interface FinishPointInput {
+  observation: string | null;
+  leftAt: Date;
+}
