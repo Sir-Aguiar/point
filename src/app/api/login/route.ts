@@ -4,7 +4,7 @@ import jwt from "jsonwebtoken";
 import { findUserByEmail } from "@/firebase/repositories/UserRepository";
 /**
  * @description
- * Controller que será executada quando um POST na rota /api/cadastro for login
+ * Controller que será executada quando um POST na rota /api/login for login
  */
 export async function POST(request: NextRequest) {
     const { email, password } = await request.json();
