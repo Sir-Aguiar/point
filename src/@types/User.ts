@@ -36,6 +36,12 @@ export interface CreateUserInput {
 }
 
 export interface LoginUserInput {
-  email: string,
-  password: string
+  email: string;
+  password: string;
+}
+
+export interface IAuthToken {
+  userId: string;
+  email: string;
+  name: string;
 }
