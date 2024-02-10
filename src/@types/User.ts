@@ -34,3 +34,8 @@ export interface CreateUserInput {
   name: string;
   password: string;
 }
+
+export interface LoginUserInput {
+  email: string,
+  password: string
+}
