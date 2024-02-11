@@ -19,7 +19,7 @@ const findUserByEmail = async (email: string) => {
     return null;
   }
 
-  return querySnapshot.docs[0].data() as IUser;
+  return { ...querySnapshot.docs[0].data(), userId: querySnapshot.docs[0].id } as IUser;
 };
 
 export { UserCollection, createUser, findUserByEmail };

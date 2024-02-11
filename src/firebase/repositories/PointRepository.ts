@@ -1,4 +1,4 @@
-import { addDoc, collection, doc, query, getDocs, where, limit,  updateDoc, orderBy } from "firebase/firestore";
+import { addDoc, collection, doc, query, getDocs, where, limit, updateDoc, orderBy } from "firebase/firestore";
 import { firestore } from "../firestore";
 import { CreatePointInput, FinishPointInput, IPoint } from "@/@types/Point";
 
@@ -15,16 +15,16 @@ const finishPoint = async (docId: string, { leftAt, observation }: FinishPointIn
   await updateDoc(pointRef, { leftAt, observation });
 };
 
-const findLastPointById = async (id: string) => {
-  const emailQuery = query(PointCollection, where("id", "==", id), orderBy("joinedAt", 'desc'), limit(1));
+const findLastPointByEmail = async (userEmail: string) => {
+  console.log(userEmail)
+  const emailQuery = query(PointCollection, where("userEmail", "==", "felipeaguiar@mti.mt.gov.br"));
 
   const querySnapshot = await getDocs(emailQuery);
+  console.log(querySnapshot.size)
+  console.log(querySnapshot.docs)
+  console.log(querySnapshot.docs[0])
 
-  if (querySnapshot.size < 1) {
-    return null;
-  }
-
-  return querySnapshot.docs[0].data() as IPoint;
+  return { ...querySnapshot.docs[0].data(), pointId: querySnapshot.docs[0].id } as IPoint;
 };
 
-export { PointCollection, finishPoint, createPoint, findLastPointById };
+export { PointCollection, finishPoint, createPoint, findLastPointByEmail };
