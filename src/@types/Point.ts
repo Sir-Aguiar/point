@@ -13,8 +13,8 @@ export interface IPoint {
   pointId: string;
   userEmail: string;
   observation: string | null;
-  joinedAt: Date;
-  leftAt: Date | null;
+  joinedAt: string;
+  leftAt: string | null;
 }
 
 /**

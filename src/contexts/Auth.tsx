@@ -20,6 +20,7 @@ const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => 
 
   const logIn = ({ token }: { token: string }) => {
     const Payload = jwtDecode(token) as IAuthToken | undefined;
+    console.log(Payload)
 
     if (!Payload) {
       return false;

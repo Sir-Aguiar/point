@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
+import { getFirestore, initializeFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: process.env.FIRESTORE_API_KEY,
@@ -12,6 +12,8 @@ const firebaseConfig = {
 };
 
 const firebase = initializeApp(firebaseConfig);
-const firestore = getFirestore(firebase);
+const firestore = initializeFirestore(firebase, {
+  experimentalForceLongPolling: true, 
+});
 
 export { firestore };
