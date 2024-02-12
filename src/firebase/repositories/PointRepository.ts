@@ -16,15 +16,10 @@ const finishPoint = async (docId: string, { leftAt, observation }: FinishPointIn
 };
 
 const findLastPointByEmail = async (userEmail: string) => {
-  console.log(userEmail)
   const emailQuery = query(PointCollection, where("userEmail", "==", userEmail), orderBy("joinedAt", "desc"), limit(1));
-  console.log(emailQuery)
   const querySnapshot = await getDocs(emailQuery);
-  console.log(querySnapshot.size)
-  console.log(querySnapshot.docs)
-  console.log(querySnapshot.docs[0])
   if(querySnapshot.docs[0])
-    return { ...querySnapshot.docs[0].data(), pointId: querySnapshot.docs[0].id } as IPoint;
+  return { ...querySnapshot.docs[0].data(), pointId: querySnapshot.docs[0].id } as IPoint;
   else 
     return undefined;
 };
