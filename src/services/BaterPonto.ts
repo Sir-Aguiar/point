@@ -2,6 +2,7 @@ import { createPoint, finishPoint, findLastPointByEmail } from "@/firebase/repos
 
 export async function BaterPonto(userEmail: string | undefined, userId: string | undefined, observation: string | undefined) {
   const now = new Date();
+
   if (!observation) observation = "";
 
   if (userEmail && userId) {
@@ -9,19 +10,25 @@ export async function BaterPonto(userEmail: string | undefined, userId: string |
     
     let LastPoint = await findLastPointByEmail(userEmail);
     
-    console.log(LastPoint)
 
 
-    /* if (new Date(LastPoint!.joinedAt).toLocaleDateString() == now.toLocaleDateString()) {
-      if (!LastPoint!.leftAt) {
-        await finishPoint(userId, { observation, leftAt: now });
+    if(LastPoint){
+      if (new Date(LastPoint.joinedAt.seconds * 1000).toLocaleDateString() == now.toLocaleDateString()) {
+
+        if (!LastPoint.leftAt) {
+
+          await finishPoint(LastPoint.pointId, { observation, leftAt: now });
+
+        } else {
+          console.log("todos os pontos já batidos");
+        }
       } else {
-        console.log("todos os pontos já batidos");
-      }
+        await createPoint({ userEmail, observation, joinedAt: now });
+      } 
     } else {
-      console.log(userEmail)
       await createPoint({ userEmail, observation, joinedAt: now });
-    } */
+    }
+    
   }
 
 }

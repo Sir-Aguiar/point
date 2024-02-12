@@ -29,8 +29,8 @@ export default function Home() {
     <main className={styles.main}>
       <header className="d-flex justify-content-between align-items-center">
         <div className="d-flex flex-column gap-2 ">
-          <h1 style={{ fontSize: "24px", fontWeight: "bold" }}>Felipe Ferreira Aguiar</h1>
-          <h2 style={{ fontSize: "14px" }}>felipeaguiar@mti.mt.gov.br</h2>
+          <h1 style={{ fontSize: "24px", fontWeight: "bold" }}>{authState?.name}</h1>
+          <h2 style={{ fontSize: "14px" }}>{authState?.email}</h2>
           <div className="d-flex gap-2 text-danger align-items-center" style={{ fontSize: "14px" }} onClick={() => logOut()}>
             <Image src={logout} alt="logout" style={{ maxHeight: "15px", maxWidth: "15px" }} />
             Desconectar
@@ -40,7 +40,7 @@ export default function Home() {
       </header>
       <div className={styles.main_content}>
         <form className={styles.point_form} onSubmit={handleSubmit(async () => { await BaterPonto(authState?.email, authState?.userId, observacao) })}>
-          <h1 style={{ fontSize: "16px", fontWeight: "500" }}>Registro referente ao dia 06/02/2024</h1>
+          <h1 style={{ fontSize: "16px", fontWeight: "500" }}>Registro referente ao dia {new Date().toLocaleDateString()}</h1>
           <FloatingLabel controlId="floatingTextarea2" label="Observação">
             <Form.Control
               as="textarea"
